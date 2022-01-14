@@ -3,6 +3,11 @@ import './Board.css'
 import { Square } from './Square'
 
 export const Board = () => {
+    const renderSquare = () =>{
+        return (
+            <Square />
+        )
+    }
     return (
         <div style={{
             backgroundColor: 'skyblue',
@@ -11,19 +16,19 @@ export const Board = () => {
         }}>
             Board
             <div className='board-row'>
-                <Square />
-                <Square />
-                <Square />
+                {renderSquare()}
+                {renderSquare()}
+                {renderSquare()}
             </div>
             <div className='board-row'>
-                <Square />
-                <Square />
-                <Square />
+                {renderSquare()}
+                {renderSquare()}
+                {renderSquare()}
             </div>
             <div className='board-row'>
-                <Square />
-                <Square />
-                <Square />
+                {renderSquare()}
+                {renderSquare()}
+                {renderSquare()}
             </div>
         </div>
     )
