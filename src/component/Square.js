@@ -1,13 +1,11 @@
 import React from 'react'
+import './Square.css'
 
 export const Square = () =>{
     return (
-        <div style={{
-            backgroundColor: 'gold',
-            margin: 10,
-            padding: 20
-        }}>
-            Square
+        <div 
+        className='square'>
+            X
         </div>
     )
 }
