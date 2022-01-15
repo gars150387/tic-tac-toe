@@ -1,11 +1,11 @@
 import React from 'react'
 import './Square.css'
 
-export const Square = () =>{
+export const Square = (props) =>{
     return (
         <div 
         className='square'>
-            X
+            {props.value}
         </div>
     )
 }
