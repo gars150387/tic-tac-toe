@@ -3,9 +3,10 @@ import './Board.css'
 import { Square } from './Square'
 
 export const Board = () => {
-    const renderSquare = () =>{
+    
+    const renderSquare = (i) =>{
         return (
-            <Square />
+            <Square value={i} />
         )
     }
     return (
@@ -16,19 +17,19 @@ export const Board = () => {
         }}>
             Board
             <div className='board-row'>
-                {renderSquare()}
-                {renderSquare()}
-                {renderSquare()}
+                {renderSquare(0)}
+                {renderSquare(1)}
+                {renderSquare(2)}
             </div>
             <div className='board-row'>
-                {renderSquare()}
-                {renderSquare()}
-                {renderSquare()}
+                {renderSquare(3)}
+                {renderSquare(4)}
+                {renderSquare(5)}
             </div>
             <div className='board-row'>
-                {renderSquare()}
-                {renderSquare()}
-                {renderSquare()}
+                {renderSquare(6)}
+                {renderSquare(7)}
+                {renderSquare(8)}
             </div>
         </div>
     )
