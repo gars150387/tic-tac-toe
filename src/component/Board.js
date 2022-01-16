@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import './Board.css'
+import { Winner } from './RulesToWin'
 import { Square } from './Square'
+import { CalculateWinner } from './RulesToWin'
 
 export const Board = () => {
     // const initialSquares = [
@@ -45,15 +47,29 @@ export const Board = () => {
         )
     }
 
-    const status = `Next player: ${xIsNext ? 'X' : 'O'}`;
+    const CalculateWinner = (square) =>{
+        const lines = [
+            [0,1,2], [3,4,5], [6,7,8], //rows
+            [0,3,6],[1,4,7],[2,5,8], //columns
+            [0,4,8],[2,4,6] //diagonals
+        ]
+    
+        for (let line of lines){
+            const [a,b,c] = line;
+            if (square[a] && square[a] === square[b] && square[c]){
+                return square[a] //whatever 'X or 'O
+            }
+        }
+        return null
+    }
+
+    const winner = CalculateWinner(square)
+    const status = winner ?
+    `Winner: ${winner}` : `Next player: ${xIsNext ? 'X' : 'O'}`;
 
     return (
-        <div style={{
-            backgroundColor: 'skyblue',
-            margin: 10,
-            padding: 20
-        }}>
-            <div>{status}</div>
+        <div>
+            <div className='status'>{status}</div>
             <div className='board-row'>
                 {renderSquare(0)}
                 {renderSquare(1)}
@@ -72,3 +88,4 @@ export const Board = () => {
         </div>
     )
 }
+
