@@ -44,13 +44,16 @@ export const Board = () => {
             />
         )
     }
+
+    const status = `Next player: ${xIsNext ? 'X' : 'O'}`;
+
     return (
         <div style={{
             backgroundColor: 'skyblue',
             margin: 10,
             padding: 20
         }}>
-            Board
+            <div>{status}</div>
             <div className='board-row'>
                 {renderSquare(0)}
                 {renderSquare(1)}
