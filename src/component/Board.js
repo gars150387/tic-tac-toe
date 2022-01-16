@@ -3,6 +3,7 @@ import './Board.css'
 import { Winner } from './RulesToWin'
 import { Square } from './Square'
 import { CalculateWinner } from './RulesToWin'
+import { calculateNewValue } from '@testing-library/user-event/dist/utils'
 
 export const Board = () => {
     // const initialSquares = [
@@ -30,13 +31,19 @@ export const Board = () => {
 
         //1. Make a copy of square state array
         const newSquare = [...square]
+
+        const winnerDeclared =Boolean(CalculateWinner(newSquare)) //function to stop assign value after a winner is declared
+        const squareFilled = Boolean(newSquare[i]) //function to stop after a square is fill and avoid to overide
+        if(winnerDeclared || squareFilled){
+            return;
+        }
         //2. mutate the copy, setting the i-th element to 'x'
         newSquare[i] = xIsNext ? 'X' : 'O' //in the same variable, a ternary operator is added to render 'X' or 'O'
         //3. call the setSquare function with the mutated copy
         setSquare(newSquare)
         setXIsNext(!xIsNext) //to flip the boolean value
 
-        alert(`square ${i} clicked`)
+        // alert(`square ${i} clicked`)
     }
 
     const renderSquare = (i) => {
@@ -64,6 +71,7 @@ export const Board = () => {
     }
 
     const winner = CalculateWinner(square)
+
     const status = winner ?
     `Winner: ${winner}` : `Next player: ${xIsNext ? 'X' : 'O'}`;
 
