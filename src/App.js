@@ -10,9 +10,10 @@ import { Board } from './component/Board';
 // }
 
 const App = () =>{
+  
   return (
     <div className="App">
-      Game
+      Tic-Tac-Toe
       <Board/>
     </div>
   );
