@@ -17,9 +17,14 @@ export const Board = () => {
 
     const [square, setSquare] = useState(initialSquares)
 
+    const handleClickEvent = (i) =>{
+        alert(`square ${i} clicked`)
+    }
+
     const renderSquare = (i) => {
         return (
-            <Square value={square[i]} 
+            <Square value={square[i]}
+            onClickEvent={()=> handleClickEvent(i)} 
             />
         )
     }
